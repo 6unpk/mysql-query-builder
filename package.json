@@ -1,0 +1,25 @@
+{
+  "name": "@6unpk/simple-mysql-query-builder",
+  "version": "1.0.0",
+  "description": "simple mysql query maker",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/6unpk/mysql-query-builder.git"
+  },
+  "keywords": [
+    "mysql"
+  ],
+  "author": "6unpk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/6unpk/mysql-query-builder/issues"
+  },
+  "homepage": "https://github.com/6unpk/mysql-query-builder#readme"
+}
