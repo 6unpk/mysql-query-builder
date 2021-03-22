@@ -4,6 +4,10 @@
 
 simple javascirpt query maker for mysql.
 
+support for complex condition of query.
+
+easy to use.
+
 sponsored by [theklab](https://theklab.co)
 
 # Installation
@@ -44,21 +48,19 @@ console.log(build);
 
 and will update more...
 
-# CONDITION EXAMPLE
+# USAGE EXAMPLE
 
 ## 1. Expression Replace
 ```
 const condition = {
-      'user_id': ['123', '456'],
-      'account_id': ['abc', 'def'],
-      'meeting_date': {
-        expression: '(:from_date <= meeting_date AND meeting_date <= :to_date)',
-        value: {
-          ":from_date": 8,
-          ":to_date": 9
-        } 
-      }
-    };
+  'meeting_date': {
+    expression: '(:from_date <= meeting_date AND meeting_date <= :to_date)',
+    value: {
+      ":from_date": 8,
+      ":to_date": 9
+    } 
+  }
+};
 ```
 
 
@@ -78,11 +80,69 @@ obj.history = history;
 let build = builder9.table('SalesLogs').update(obj).where({'log_id': '6dc314af38c9be471f98a6044d6dc073'}).build();
 ```
 
-
-# TESTING
-
-run command
+## 3. UPDATE Object with condition
 
 ```
-mocah test/query_builder.test.js
+let obj = {
+  'show_count': {
+    'expression': 'show_count = show_count + 1',
+    'value': {}
+  }
+};
+let build = builder11.table('Board').update(obj).where({}).build();
+```
+
+
+## 4. Call Procedure
+```
+let build = builder10.procedure('UpdateLogHistory', '123').build();
+console.log(build);
+```
+
+## 5. Bulk Insert
+
+```
+const dateTime = new Date().getTime();
+
+let obj = {
+  'log_id': ['a', 'b'],
+  'user_id': ['1', '2'],
+  'creation_date': [dateTime, dateTime]
+};
+
+let build = builder13.table('SalesLogs').insert(obj, true).build();
+```
+
+## 6. JOIN, LEFT JOIN, RIHGT JOIN ...
+
+```
+    let userId ='123';
+
+    let build = builder7.table('UsersTree').read().where({'UsersTree.user_id': userId}).join('Users', {'Users.user_id': userId}).build();
+```
+
+## 7. Complex condition
+
+In this case, `user_id` condition converts to `user_id = '123' OR user_id = '456'` (OR is default, you can change it to AND)
+
+```
+const condition = {
+  'user_id': ['123', '456'],
+  'meeting_date': {
+    expression: '(:from_date <= meeting_date AND meeting_date <= :to_date)',
+    value: {
+      ":from_date": 8,
+      ":to_date": 9
+    } 
+  }
+};
+
+let build = builder4.table('SalesLogs').read().where(condition).order('meeting_date', 'DESC').paginate(3, 4).build();
+```
+# Test
+
+run test with mocha
+
+```
+mocha test/query_builder.test.js
 ```
