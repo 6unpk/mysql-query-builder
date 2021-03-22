@@ -1,14 +1,21 @@
-# mysql-query-builder
+# sl-mysql-query-builder
 
-![](https://img.shields.io/npm/v/@6unpk/simple-mysql-query-builder)
+[![](https://img.shields.io/npm/v/sl-mysql-query-builder)](https://www.npmjs.com/package/sl-mysql-query-builder)
 
-simple query maker for mysql.
+simple javascirpt query maker for mysql.
 
 sponsored by [theklab](https://theklab.co)
 
-# Quick Example
+# Installation
 
 ```
+npm install sl-mysql-query-builder
+```
+
+# Quick Example
+```
+const MySQLQueryBuilder = require('sl-mysql-query-builder');
+
 const condition = {
   'user_id': '123'	
 }
