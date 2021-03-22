@@ -16,6 +16,8 @@ npm install sl-mysql-query-builder
 ```
 const MySQLQueryBuilder = require('sl-mysql-query-builder');
 
+const builder = new MySQLQueryBuilder();
+
 const condition = {
   'user_id': '123'	
 }
