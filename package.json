@@ -1,5 +1,5 @@
 {
-  "name": "@6unpk/simple-mysql-query-builder",
+  "name": "sl-mysql-query-builder",
   "version": "1.0.0",
   "description": "simple mysql query maker",
   "main": "index.js",
