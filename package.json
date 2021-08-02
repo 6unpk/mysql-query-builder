@@ -1,6 +1,6 @@
 {
   "name": "sl-mysql-query-builder",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "simple mysql query maker",
   "main": "index.js",
   "directories": {
