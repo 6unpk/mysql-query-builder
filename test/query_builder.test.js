@@ -1,5 +1,5 @@
 const assert = require('assert');
-const MySQLQueryBuilder = require('../../repository/mysql/builder');
+const MySQLQueryBuilder = require('../src/builder');
 
 describe('mysql query builder test', () => {
   let builder = new MySQLQueryBuilder();
@@ -160,6 +160,15 @@ describe('mysql query builder test', () => {
       'creation_date': [dateTime]
     };
     let build = builder13.table('SalesLogCoUsers').insert(obj, true).build();
+    console.log(build);
+  });
+
+  let builder14 = new MySQLQueryBuilder();
+  it('test 14: delete', () => {
+    const obj = {
+      'id': '1'
+    };
+    const build = builder14.delete().table('Table').where(obj).build();
     console.log(build);
   });
 });

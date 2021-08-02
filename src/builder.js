@@ -26,6 +26,11 @@ class MySQLQueryBuilder {
     return this;
   }
 
+  delete() {
+    this.commands = "delete";
+    return this;
+  }
+
   where(condition) {
     this.whereItem = true;
     this.condition = condition;
@@ -194,6 +199,11 @@ class MySQLQueryBuilder {
         query = `INSERT INTO ${this.table} (${this.listToString(columns)}) VALUES ${total.slice(0, total.length-2)}`;                
       } else {
         query = `INSERT INTO ${this.table} (${this.listToString(columns)}) VALUES (${this.listToString(values, true)})`;        
+      }
+    } else if (this.commands === "delete") {
+      query = `DELETE * FROM ${this.table}`;
+      if (this.whereItem) {
+        query += this._conditionParser(this.condition, true);
       }
     }
 
