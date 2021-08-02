@@ -6,10 +6,6 @@ simple javascirpt query maker for mysql.
 
 support for complex condition of query.
 
-easy to use.
-
-sponsored by [theklab](https://theklab.co)
-
 # Installation
 
 ```
